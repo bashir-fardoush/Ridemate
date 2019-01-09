@@ -1,5 +1,9 @@
 package com.fardoushlab.ridemate;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -7,16 +11,24 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.fardoushlab.ridemate.R;
+import com.google.android.gms.location.FusedLocationProviderClient;
+
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.Task;
 
-public class HomeActivity extends AppCompatActivity implements View.OnClickListener , OnMapReadyCallback {
+public class HomeActivity extends AppCompatActivity implements View.OnClickListener, OnMapReadyCallback{
     private static final int MINI_INDEX = 1;
     private static final int SUB_INDEX = 2;
     private static final int MICRO_INDEX = 3;
@@ -29,6 +41,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private static int selectedOption = 0;
 
     private GoogleMap mMap;
+    private FusedLocationProviderClient locationProviderClient;
+    private LocationRequest locationRequest;
+    private LocationCallback locationCallback;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +80,44 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+        locationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+        locationRequest = new LocationRequest();
+        locationRequest.setInterval(15000);
+        locationRequest.setFastestInterval(3000);
+        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
 
+        locationCallback = new LocationCallback() {
+            @Override
+            public void onLocationResult(LocationResult locationResult) {
+                for (Location location : locationResult.getLocations()) {
+                    Toast.makeText(HomeActivity.this, "" + location.getLatitude(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        };
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+         locationProviderClient.requestLocationUpdates(locationRequest,locationCallback, null);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        locationProviderClient.removeLocationUpdates(locationCallback);
     }
 
     @Override
