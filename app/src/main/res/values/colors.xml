@@ -4,4 +4,10 @@
     <color name="colorPrimaryDark">#4886D3</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorSplashBackground">#2E2F33</color>
+    <color name="colorSeaShell">#F1F1F1</color>
+    <color name="colorHavelockBlue">#498DE1</color>
+    <color name="colorDoveGray">#636363</color>
+    <color name="white">#FFFFFF</color>
+    <color name="colorMineShaft">#313131</color>
+    <color name="colorDustyGray">#9B9B9B</color>
 </resources>

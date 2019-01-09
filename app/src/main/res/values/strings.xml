@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Ridemate</string>
+    <string name="query_hint">Dallas TX, New Diamond</string>
+    <string name="title_activity_maps">Map</string>
 </resources>
