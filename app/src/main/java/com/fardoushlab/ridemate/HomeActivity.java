@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.fardoushlab.ridemate.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
 
 import com.google.android.gms.location.LocationCallback;
@@ -26,9 +25,9 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.OnSuccessListener;
 
-public class HomeActivity extends AppCompatActivity implements View.OnClickListener, OnMapReadyCallback{
+public class HomeActivity extends AppCompatActivity implements View.OnClickListener, OnMapReadyCallback {
     private static final int MINI_INDEX = 1;
     private static final int SUB_INDEX = 2;
     private static final int MICRO_INDEX = 3;
@@ -36,7 +35,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private static final int NOVA_INDEX = 5;
     private Toolbar toolbar;
     private ImageView arrowIV, pointerIv;
-    private Button miniBtn, microBtn, bikeBtn, subBtn, novaBtn;
+    private Button miniBtn, microBtn, bikeBtn, subBtn, novaBtn, pointerBtn;
     private LinearLayout hideViewLayout;
     private static int selectedOption = 0;
 
@@ -58,7 +57,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         arrowIV = findViewById(R.id.iv_arrow);
-        pointerIv = findViewById(R.id.iv_pointer);
+        pointerBtn = findViewById(R.id.btn_pointer);
 
         hideViewLayout = findViewById(R.id.ll_hideview);
         miniBtn = findViewById(R.id.btn_mini);
@@ -68,7 +67,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         novaBtn = findViewById(R.id.btn_nova);
 
 
-        pointerIv.setOnClickListener(this);
+        pointerBtn.setOnClickListener(this);
         arrowIV.setOnClickListener(this);
         miniBtn.setOnClickListener(this);
         subBtn.setOnClickListener(this);
@@ -111,7 +110,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-         locationProviderClient.requestLocationUpdates(locationRequest,locationCallback, null);
+        locationProviderClient.requestLocationUpdates(locationRequest, locationCallback, null);
+
     }
 
     @Override
@@ -196,7 +196,34 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 }
 
                 break;
+
+            case R.id.btn_pointer:
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    // TODO: Consider calling
+                    //    ActivityCompat#requestPermissions
+                    // here to request the missing permissions, and then overriding
+                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                    //                                          int[] grantResults)
+                    // to handle the case where the user grants the permission. See the documentation
+                    // for ActivityCompat#requestPermissions for more details.
+                    return;
+                }
+                locationProviderClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+
+                        updateMapMarker(location);
+
+                    }
+                });
+                break;
         }
+    }
+
+    private void updateMapMarker(Location location) {
+        LatLng place = new LatLng(location.getLatitude(), location.getLongitude());
+        mMap.addMarker(new MarkerOptions().position(place).title("Your location"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(place,18));
     }
 
     private void deselectOtherBtn(int i) {

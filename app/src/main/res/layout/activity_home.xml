@@ -77,20 +77,21 @@
                 android:gravity="center_vertical|left"
                 android:text="PICK UP POINT"
                 app:layout_constraintBottom_toTopOf="@+id/guideline"
-                app:layout_constraintEnd_toStartOf="@+id/iv_pointer"
+                app:layout_constraintEnd_toStartOf="@+id/btn_pointer"
                 app:layout_constraintStart_toEndOf="@id/tv_dot"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.476" />
 
-            <ImageView
-                android:id="@+id/iv_pointer"
+            <Button
+                android:id="@+id/btn_pointer"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
                 android:gravity="center_vertical|left"
-                android:src="@drawable/pointer"
+                android:background="@null"
+                android:foreground="@drawable/pointer"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -104,7 +105,7 @@
                 app:queryHint="@string/query_hint"
                 android:layout_marginLeft="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/iv_pointer"
+                app:layout_constraintEnd_toStartOf="@+id/btn_pointer"
                 app:layout_constraintStart_toEndOf="@+id/tv_dot"
                 app:layout_constraintTop_toTopOf="@+id/guideline" />
 
