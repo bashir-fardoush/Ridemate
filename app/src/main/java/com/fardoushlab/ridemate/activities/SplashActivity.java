@@ -1,10 +1,12 @@
-package com.fardoushlab.ridemate;
+package com.fardoushlab.ridemate.activities;
 
 import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import com.fardoushlab.ridemate.R;
 
 public class SplashActivity extends AppCompatActivity {
     private ConstraintLayout constraintLayout;

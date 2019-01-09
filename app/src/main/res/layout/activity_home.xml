@@ -2,9 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_parent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeActivity">
+    tools:context=".activities.HomeActivity">
 
     <RelativeLayout
         android:id="@+id/rl_appbar"
@@ -104,6 +105,8 @@
                 android:layout_height="wrap_content"
                 app:queryHint="@string/query_hint"
                 android:layout_marginLeft="8dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/btn_pointer"
                 app:layout_constraintStart_toEndOf="@+id/tv_dot"
