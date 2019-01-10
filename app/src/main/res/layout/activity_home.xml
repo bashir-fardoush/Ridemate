@@ -97,7 +97,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <android.support.v7.widget.SearchView
-                android:id="@+id/et_locatin"
+                android:id="@+id/sv_location_name"
                 app:iconifiedByDefault="false"
                 app:searchIcon="@null"
                 android:layout_width="0dp"

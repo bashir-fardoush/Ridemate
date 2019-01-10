@@ -22,10 +22,11 @@
         <android.support.v7.widget.Toolbar
             android:id="@+id/home_toolbar"
             android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
             android:theme="@style/ToolbarTheme"
             app:titleTextColor="@color/white"
             app:popupTheme="@style/AppTheme"
-            android:layout_height="?attr/actionBarSize"
+
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true">
@@ -38,7 +39,7 @@
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="5dp"
+        android:elevation="4dp"
         android:id="@+id/cv_header"
         app:cardCornerRadius="3dp"
         android:background="@color/white"
@@ -72,8 +73,8 @@
 
             <TextView
                 android:id="@+id/tv_pickup"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_width="436dp"
+                android:layout_height="17dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="4dp"
                 android:gravity="center_vertical|left"
@@ -90,29 +91,29 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:gravity="center_vertical|left"
                 android:background="@null"
                 android:foreground="@drawable/pointer"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:gravity="center_vertical|left"
+                app:layout_constraintBottom_toTopOf="@+id/guideline"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <android.support.v7.widget.SearchView
-                android:id="@+id/et_locatin"
-                app:iconifiedByDefault="false"
-                app:searchIcon="@null"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                app:queryHint="@string/query_hint"
+                android:id="@+id/sv_location_name"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
                 android:layout_marginLeft="8dp"
-
+                android:layout_marginEnd="8dp"
                 android:focusable="false"
                 android:focusableInTouchMode="true"
+
+                app:iconifiedByDefault="false"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/btn_pointer"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tv_dot"
-                app:layout_constraintTop_toTopOf="@+id/guideline" />
+                app:layout_constraintTop_toTopOf="@+id/guideline"
+                app:queryHint="@string/query_hint"
+                app:searchIcon="@null" />
 
             <android.support.constraint.Guideline
                 android:id="@+id/guideline"
@@ -127,7 +128,7 @@
     <RelativeLayout
         android:id="@+id/rl_body"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="match_parent"
         android:layout_below="@id/rl_appbar"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
@@ -138,118 +139,132 @@
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
             android:layout_above="@id/btn_confirm"
-             />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true" />
 
 
         <ImageView
-            android:elevation="7dp"
             android:id="@+id/iv_arrow"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/arrow_down"
-            android:background="@drawable/btn_bg_round"
             android:layout_above="@id/ll_options"
-            android:layout_marginBottom="-25dp"/>
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="-25dp"
+            android:background="@drawable/btn_bg_round"
+            android:elevation="7dp"
+            android:src="@drawable/arrow_down" />
+
         <LinearLayout
             android:id="@+id/ll_options"
-            android:background="@color/colorSeaShell"
-            android:layout_above="@id/btn_confirm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_above="@id/btn_confirm"
             android:layout_alignParentLeft="true"
             android:layout_alignParentRight="true"
+            android:background="@color/colorSeaShell"
             android:orientation="vertical">
+
             <android.support.v7.widget.CardView
-                android:elevation="5dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:elevation="5dp">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
                     <LinearLayout
                         android:id="@+id/ll_eta"
-                        android:layout_toStartOf="@id/devider_wall"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
+                        android:layout_toStartOf="@id/devider_wall"
                         android:orientation="vertical">
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="1X"
-                                android:gravity="center"
-                                android:textSize="22sp"
-                                android:textColor="@color/colorHavelockBlue"/>
-                            <ImageView
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
-                                android:layout_gravity="center"
-                                android:src="@drawable/arrow"/>
 
-                        </LinearLayout>
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Seat(s)"
-                            android:gravity="center"
-                            android:textSize="18sp"
-                            android:textColor="@color/colorDustyGray"/>
-
-                    </LinearLayout>
-                    <LinearLayout
-                        android:id="@+id/ll_capacity"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_toEndOf="@id/devider_wall"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:orientation="horizontal">
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="$10-12"
-                                android:textSize="22sp"
+                                android:gravity="center"
+                                android:text="1X"
                                 android:textColor="@color/colorHavelockBlue"
-                                android:gravity="center"/>
+                                android:textSize="22sp" />
+
                             <ImageView
                                 android:layout_width="20dp"
                                 android:layout_height="20dp"
                                 android:layout_gravity="center"
-                                android:src="@drawable/tick"/>
+                                android:src="@drawable/arrow" />
+
                         </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Seat(s)"
+                            android:textColor="@color/colorDustyGray"
+                            android:textSize="18sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_capacity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_toEndOf="@id/devider_wall"
+                        android:orientation="vertical">
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center">
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="$10-12"
+                                android:textColor="@color/colorHavelockBlue"
+                                android:textSize="22sp" />
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/tick" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
                             <ImageView
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
                                 android:layout_gravity="center"
-                                android:src="@drawable/card"/>
+                                android:src="@drawable/card" />
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:gravity="center"
                                 android:text="6990"
-                                android:textSize="18sp"
                                 android:textColor="@color/colorDustyGray"
-                                android:gravity="center"/>
+                                android:textSize="18sp" />
 
                         </LinearLayout>
 
@@ -260,8 +275,8 @@
                         android:id="@+id/devider_wall"
                         android:layout_width="2dp"
                         android:layout_height="30dp"
-                        android:background="@color/colorDustyGray"
-                        android:layout_centerInParent="true" />
+                        android:layout_centerInParent="true"
+                        android:background="@color/colorDustyGray" />
 
 
                 </RelativeLayout>
@@ -270,11 +285,12 @@
 
             <LinearLayout
                 android:id="@+id/ll_hideview"
-                android:padding="8dp"
-                android:visibility="visible"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="5dp"
+                android:visibility="visible">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -286,62 +302,70 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="vertical">
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:text="6 Min"
-                            android:textSize="22sp"
-                            android:textColor="@color/colorMineShaft"/>
+                            android:textColor="@color/colorMineShaft"
+                            android:textSize="18sp" />
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:text="ETA"
-                            android:textSize="18sp"
-                            android:textColor="@color/colorDustyGray"/>
+                            android:textColor="@color/colorDustyGray"
+                            android:textSize="14sp" />
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="vertical">
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:textSize="22sp"
+                            android:text="2.1x"
                             android:textColor="@color/colorMineShaft"
-                            android:text="2.1x" />
+                            android:textSize="18sp" />
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:textSize="18sp"
+                            android:text="Charge"
                             android:textColor="@color/colorDustyGray"
-                            android:text="Charge" />
+                            android:textSize="14sp" />
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="vertical">
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:textSize="22sp"
+                            android:text="6 People"
                             android:textColor="@color/colorMineShaft"
-                            android:text="6 People" />
+                            android:textSize="18sp" />
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:textSize="18sp"
+                            android:text="Capacity"
                             android:textColor="@color/colorDustyGray"
-                            android:text="Capacity" />
+                            android:textSize="14sp" />
 
                     </LinearLayout>
 
@@ -355,119 +379,134 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
                         <Button
                             android:id="@+id/btn_mini"
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
+                            android:layout_width="@dimen/option_btn_width_land"
+                            android:layout_height="@dimen/option_btn_height_land"
                             android:layout_gravity="center"
                             android:background="@drawable/option_bg_gray"
-                            android:foreground="@drawable/mini"/>
+                            android:foreground="@drawable/mini" />
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textSize="14sp"
                             android:gravity="center_horizontal"
+                            android:text="Mini Van"
                             android:textColor="@color/colorDoveGray"
-                            android:text="Mini Van"/>
+                            android:textSize="14sp" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
                         <Button
                             android:id="@+id/btn_sub"
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
+                            android:layout_width="@dimen/option_btn_width_land"
+                            android:layout_height="@dimen/option_btn_height_land"
                             android:layout_gravity="center"
                             android:background="@drawable/option_bg_gray"
                             android:foreground="@drawable/sub" />
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textSize="14sp"
                             android:gravity="center_horizontal"
+                            android:text="SUB"
                             android:textColor="@color/colorDoveGray"
-                            android:text="SUB"/>
+                            android:textSize="14sp" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
                         <Button
                             android:id="@+id/btn_micro"
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
+                            android:layout_width="@dimen/option_btn_width_land"
+                            android:layout_height="@dimen/option_btn_height_land"
                             android:layout_gravity="center"
                             android:background="@drawable/option_bg_gray"
                             android:foreground="@drawable/micro" />
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textSize="14sp"
                             android:gravity="center_horizontal"
+                            android:text="Micro"
                             android:textColor="@color/colorDoveGray"
-                            android:text="Micro"/>
+                            android:textSize="14sp" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
                         <Button
                             android:id="@+id/btn_bike"
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
+                            android:layout_width="@dimen/option_btn_width_land"
+                            android:layout_height="@dimen/option_btn_height_land"
                             android:layout_gravity="center"
                             android:background="@drawable/option_bg_gray"
                             android:foreground="@drawable/bike" />
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textSize="14sp"
                             android:gravity="center_horizontal"
+                            android:text="Bike"
                             android:textColor="@color/colorDoveGray"
-                            android:text="Bike"/>
+                            android:textSize="14sp" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
                         <Button
                             android:id="@+id/btn_nova"
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
+                            android:layout_width="@dimen/option_btn_width_land"
+                            android:layout_height="@dimen/option_btn_height_land"
                             android:layout_gravity="center"
                             android:background="@drawable/option_bg_gray"
                             android:foreground="@drawable/nova" />
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textSize="14sp"
                             android:gravity="center_horizontal"
+                            android:text="Nova"
                             android:textColor="@color/colorDoveGray"
-                            android:text="Nova"/>
+                            android:textSize="14sp" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
 
 
         </LinearLayout>
+
         <Button
             android:id="@+id/btn_confirm"
-            android:background="@color/colorPrimary"
-            android:textColor="@color/white"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentLeft="true"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
             android:layout_alignParentBottom="true"
-            android:textSize="16sp"
-            android:text="CONFIRM"/>
+            android:background="@color/colorPrimary"
+            android:text="CONFIRM"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
 
     </RelativeLayout>
 

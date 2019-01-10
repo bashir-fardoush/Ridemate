@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="option_btn_height_port">60dp</dimen>
+    <dimen name="option_btn_width_port">60dp</dimen>
+    <dimen name="option_btn_height_land">40dp</dimen>
+    <dimen name="option_btn_width_land">40dp</dimen>
+</resources>
