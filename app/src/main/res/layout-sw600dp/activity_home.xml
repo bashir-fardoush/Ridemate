@@ -44,6 +44,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
+        android:layout_below="@id/rl_appbar"
         android:layout_marginStart="15dp"
         android:layout_marginTop="75dp"
         android:layout_marginEnd="15dp" >
@@ -370,7 +371,6 @@
                             android:id="@+id/btn_mini"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
-                            android:layout_gravity="center"
                             android:background="@drawable/option_bg_gray"
                             android:foreground="@drawable/mini"/>
                         <TextView
@@ -390,7 +390,6 @@
                             android:id="@+id/btn_sub"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
-                            android:layout_gravity="center"
                             android:background="@drawable/option_bg_gray"
                             android:foreground="@drawable/sub" />
                         <TextView
@@ -410,7 +409,6 @@
                             android:id="@+id/btn_micro"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
-                            android:layout_gravity="center"
                             android:background="@drawable/option_bg_gray"
                             android:foreground="@drawable/micro" />
                         <TextView
@@ -430,14 +428,12 @@
                             android:id="@+id/btn_bike"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
-                            android:layout_gravity="center"
                             android:background="@drawable/option_bg_gray"
                             android:foreground="@drawable/bike" />
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textSize="14sp"
-
                             android:gravity="center_horizontal"
                             android:textColor="@color/colorDoveGray"
                             android:text="Bike"/>
@@ -451,7 +447,6 @@
                             android:id="@+id/btn_nova"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
-                            android:layout_gravity="center"
                             android:background="@drawable/option_bg_gray"
                             android:foreground="@drawable/nova" />
                         <TextView
